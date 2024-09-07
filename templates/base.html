@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}YouTube Video Downloader{% endblock %}</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
+  </head>
+  <body>
+    <nav class="navbar bg-dark shadow">
+      <div class="container-fluid justify-content-center">
+        <img
+          src="{{ url_for('static', filename='assets/tri.png') }}"
+          alt="Logo"
+          height="25"
+          class="d-inline-block align-text-top px-2"
+        />
+        <span class="navbar-brand mb-0 fs-2 text-light">YTVault</span>
+      </div>
+    </nav>
+    <div class="d-flex mt-5 justify-content-center">
+      {% block content %} {% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+  </body>
+</html>

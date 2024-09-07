@@ -1,0 +1,42 @@
+{% extends "base.html" %} {% block title %}Select MP4 Format{% endblock %} {%
+block content %}
+
+<div class="p-4 rounded border border-1 border-dark w-50">
+  <h1 class="text-center p-3">Select MP4 Format</h1>
+  <form action="/download" method="post">
+    <input type="hidden" name="url" value="{{ url }}" />
+    <input type="hidden" name="audio_formats" value="{{ audio_formats }}" />
+    {% if url %}
+    <div class="text-center mt-3">
+      <iframe
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/{{ url }}"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
+    {% endif %}
+
+    <div class="form-group">
+      <label for="format_id">Available MP4 Formats:</label>
+      <select class="form-control" id="format_id" name="format_id">
+        {% for format in formats %} {% if format.format_id and
+        format.format_note %}
+        <option value="{{ format }}">
+          {{ format.format_note }} {% if format.filesize %} - {{ format.filesize
+          | filesizeformat }} {% endif %}
+        </option>
+        {% endif %} {% endfor %}
+      </select>
+    </div>
+    <div class="d-flex justify-content-center pt-4">
+      <button type="submit" class="btn btn-primary mx-2">Download</button>
+      <a href="/" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

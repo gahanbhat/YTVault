@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block title %}Download YouTube Videos{% endblock %}
+{% block content %}
+<div class="p-4 rounded border border-2 border-dark w-50 mx-auto">
+  <h1 class="text-center p-3">YouTube To MP4</h1>
+
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
+  <div class="alert alert-danger" role="alert">
+    <ul>
+      {% for category, message in messages %}
+      <li class="{{ category }}">{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %} {% endwith %}
+
+  <div class="justify-content-center">
+    <form action="/formats" method="post" class="bg-tertiary w-100">
+        <div class="form-group">
+            <input type="text" class="form-control" id="url" name="url" placeholder="Enter YouTube URL" required>
+        </div>
+        <div class="d-flex justify-content-center pt-4">
+            <button type="submit" class="btn btn-primary mx-2">Submit</button>
+            <button type="reset" class="btn btn-secondary">Clear</button>
+        </div>
+    </form>
+</div>
+    </form>
+  </div>
+</div>
+{% endblock %}
